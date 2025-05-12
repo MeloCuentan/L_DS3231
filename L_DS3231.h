@@ -38,8 +38,8 @@ public:
     void setDateTimeFromCompileTime();
 
 private:
-    uint8_t dia, mes, hora, minuto, segundo, diaSemana;
-    uint16_t anio; 
+    int8_t dia, mes, hora, minuto, segundo, diaSemana;
+    int16_t anio; 
    
     TwoWire *_wire;
     uint8_t readRegister(uint8_t reg);
