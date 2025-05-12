@@ -24,8 +24,8 @@ public:
 
     bool begin(TwoWire &wirePort = Wire);  // Inicialización con manejo de errores
 
-    void setDateTime(uint8_t date, uint8_t month, uint16_t year, uint8_t hour, uint8_t min, uint8_t sec);
-    bool getDateTime(uint8_t &date, uint8_t &month, uint16_t &year, uint8_t &hour, uint8_t &min, uint8_t &sec);
+    void setDateTime(int8_t date, int8_t month, int16_t year, int8_t hour, int8_t min, int8_t sec);
+    bool getDateTime(int8_t &date, int8_t &month, int16_t &year, int8_t &hour, int8_t &min, int8_t &sec);
 
     // Nuevos métodos para formato string (usando String de Arduino)
     String getDateFormatted();  // Formato "DD/MM/YY"
