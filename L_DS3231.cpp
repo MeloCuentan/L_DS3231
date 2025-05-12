@@ -34,57 +34,6 @@ void L_DS3231::setDateTime(int8_t date, int8_t month, int16_t year, int8_t hour,
     _wire->endTransmission();
 }
 
-/*
-void L_DS3231::setDateTime(int8_t date, int8_t month, int16_t year, int8_t hour, int8_t min, int8_t sec) {
-  uint8_t dayOfWeek = calculateDayOfWeek(date, month, year);
-  
-      uint8_t centuryBit = (year >= 2100) ? 0x80 : 0x00;
-    uint8_t monthWithCentury = decToBcd(month) | centuryBit;
-
-  uint8_t data[8] = {
-        SECONDS_REG,
-        decToBcd(sec),
-        decToBcd(min),
-        decToBcd(hour),
-        decToBcd(dayOfWeek),
-        decToBcd(date),
-        decToBcd(month),
-        decToBcd(year - 2000)};
-    _wire->beginTransmission(DS3231_ADDRESS);
-    _wire->write(data, sizeof(data));
-    _wire->endTransmission();
-}
-    */
-
-    /*
-bool L_DS3231::getDateTime(int8_t &date, int8_t &month, int16_t &year, int8_t &hour, int8_t &min, int8_t &sec) {
-    _wire->beginTransmission(DS3231_ADDRESS);
-    _wire->write(SECONDS_REG);
-    if (_wire->endTransmission() != 0) return false;
-
-    _wire->requestFrom(DS3231_ADDRESS, 7);
-    if (_wire->available() < 7) return false;
-
-    sec = bcdToDec(_wire->read() & 0x7F);
-    min = bcdToDec(_wire->read());
-    hour = bcdToDec(_wire->read() & 0x3F);
-    _wire->read(); // Ignorar día de semana
-    date = bcdToDec(_wire->read());
-    month = bcdToDec(_wire->read());
-    year = bcdToDec(_wire->read()) + 2000;
-
-    // Actualizar variables internas
-    dia = date;
-    mes = month;
-    hora = hour;
-    minuto = min;
-    segundo = sec;
-    anio = year;
-    diaSemana = calculateDayOfWeek(date, month, year);
-
-    return true;
-}
-*/
 bool L_DS3231::getDateTime(int8_t &date, int8_t &month, int16_t &year, int8_t &hour, int8_t &min, int8_t &sec) {
     _wire->beginTransmission(DS3231_ADDRESS);
     _wire->write(SECONDS_REG);
